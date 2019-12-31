@@ -7,17 +7,17 @@ import (
 func wordBreak(s string, wordDict []string) bool {
 	mark := make([]int, len(s)+1)
 	mark[0] = 1
-	for i := 1; i < len(s)+1; i++ {
-		if mark[i] == 1 {
+	for i := 0; i < len(s); i++ {
+		if mark[i] == 0 {
 			continue
 		}
 		for _, v := range wordDict {
-			if i >= len(v) && mark[i-len(v)] == 1 && s[i-len(v):i] == v {
-				mark[i] = 1
-				break
+			if i+len(v) <= len(s) && s[i:i+len(v)] == v {
+				mark[i+len(v)] = 1
 			}
 		}
 	}
+
 	if mark[len(s)] == 1 {
 		return true
 	} else {
