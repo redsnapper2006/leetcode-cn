@@ -1,2 +1,2 @@
 # URL
-https://leetcode-cn.com/problems/palindrome-partitioning/comments/
+https://leetcode-cn.com/problems/palindrome-partitioning/

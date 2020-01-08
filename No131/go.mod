@@ -1,3 +1,3 @@
-module redsnapper2006/leetcode-cn/1137
+module redsnapper2006/leetcode-cn/No131
 
 go 1.13
