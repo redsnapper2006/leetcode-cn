@@ -40,6 +40,7 @@ func Constructor(nums []int) Solution {
 		}
 		working := make([]int, len(nums))
 		copy(working, nums)
+		// By goroutine to do `yield` like Python generators
 		go helper(working, len(nums))
 	}
 
