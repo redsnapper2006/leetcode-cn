@@ -35,6 +35,31 @@ func findKthLargest(nums []int, k int) int {
 	}
 }
 
+func findKthLargestV2(nums []int, k int) int {
+	buf := make([]int, k)
+	copy(buf, nums[0:k])
+	for i := k; i < len(nums); i++ {
+
+		minIndex := 0
+		for j := 1; j < len(buf); j++ {
+			if buf[minIndex] > buf[j] {
+				minIndex = j
+			}
+		}
+		if nums[i] > buf[minIndex] {
+			buf[minIndex] = nums[i]
+		}
+	}
+
+	minIndex := 0
+	for j := 1; j < len(buf); j++ {
+		if buf[minIndex] > buf[j] {
+			minIndex = j
+		}
+	}
+	return buf[minIndex]
+}
+
 func main() {
 	fmt.Println(findKthLargest([]int{3, 2, 1, 5, 6, 4}, 2))
 	fmt.Println(findKthLargest([]int{3, 2, 3, 1, 2, 4, 5, 5, 6}, 4))
