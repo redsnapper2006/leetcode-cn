@@ -16,6 +16,7 @@ func (a RangeSlice) Swap(i, j int) {
 func (a RangeSlice) Less(i, j int) bool {
 	return a[i][0] < a[j][0]
 }
+
 func longestValidParentheses(s string) int {
 	if len(s) == 0 {
 		return 0
