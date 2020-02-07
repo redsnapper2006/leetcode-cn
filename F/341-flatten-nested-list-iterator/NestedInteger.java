@@ -12,5 +12,3 @@ public interface NestedInteger {
   // Return null if this NestedInteger holds a single integer
   List<NestedInteger> getList();
 }
-
-
