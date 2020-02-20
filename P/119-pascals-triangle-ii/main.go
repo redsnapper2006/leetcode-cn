@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func factor(n, i int) int {
 	if i == 0 {
@@ -11,7 +9,6 @@ func factor(n, i int) int {
 	if i == 1 {
 		return n
 	}
-
 	s, c := 1, n
 	for j := 0; j < i; j++ {
 		s *= c
@@ -21,7 +18,8 @@ func factor(n, i int) int {
 	return s
 }
 
-func yhsj(n int) []int {
+func getRow(rowIndex int) []int {
+	n := rowIndex + 1
 	if n == 1 {
 		return []int{1}
 	}
@@ -35,14 +33,6 @@ func yhsj(n int) []int {
 	return buf
 }
 
-func generate(numRows int) [][]int {
-	var ret [][]int
-	for i := 0; i < numRows; i++ {
-		ret = append(ret, yhsj(i+1))
-	}
-	return ret
-}
-
 func main() {
-	fmt.Println(generate(10))
+	fmt.Println(getRow(30))
 }
