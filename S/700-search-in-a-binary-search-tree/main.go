@@ -16,15 +16,14 @@ func searchBST(root *TreeNode, val int) *TreeNode {
 		return root
 	}
 
-	l := searchBST(root.Left, val)
-	if l != nil {
-		return l
+	if root.Val > val {
+		return searchBST(root.Left, val)
 	}
 
-	r := searchBST(root.Right, val)
-	if r != nil {
-		return r
+	if root.Val < val {
+		return searchBST(root.Right, val)
 	}
+
 	return nil
 }
 
