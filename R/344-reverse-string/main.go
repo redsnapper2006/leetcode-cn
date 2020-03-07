@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func reverseString(s []byte) {
+func reverseStringSwap(s []byte) {
 	i := 0
 	j := len(s) - 1
 	for i < j {
@@ -14,6 +14,19 @@ func reverseString(s []byte) {
 		i++
 		j--
 	}
+}
+
+
+func reverseString(s []byte) {
+	if len(s) <= 1 {
+		return
+	}
+	t := s[0]
+	for i:=1;i<len(s);i++ {
+		s[i-1] = s[i]
+	}
+	s[len(s)-1] =t
+	return reverseString(s[0:len(s)-1])
 }
 
 func main() {
