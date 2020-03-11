@@ -35,8 +35,8 @@ func inorderTraversal(root *TreeNode) []int {
 
 	}
 	return ret
-
 }
+
 func main() {
 	fmt.Println("a")
 }

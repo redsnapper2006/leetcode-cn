@@ -26,6 +26,28 @@ func dailyTemperatures(T []int) []int {
 	return r
 }
 
+func dailyTemperaturesV2(T []int) []int {
+	if len(T) == 1 {
+		return []int{0}
+	}
+	buf := make([]int, len(T))
+
+	stack := []int{0}
+
+	for i := 1; i < len(T); i++ {
+		if T[i] > T[stack[len(stack)-1]] {
+			for len(stack) > 0 && T[i] > T[stack[len(stack)-1]] {
+				idx := stack[len(stack)-1]
+				buf[idx] = i - idx
+				stack = stack[0 : len(stack)-1]
+			}
+		}
+		stack = append(stack, i)
+	}
+
+	return buf
+}
+
 func main() {
 	fmt.Println(dailyTemperatures([]int{73, 74, 75, 71, 69, 72, 76, 73}))
 }
