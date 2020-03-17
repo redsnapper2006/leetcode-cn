@@ -22,23 +22,25 @@ func updateMatrix(matrix [][]int) [][]int {
 		for i := 0; i < len(candi); i++ {
 			r, c := candi[i][0], candi[i][1]
 			if r > 0 && matrix[r-1][c] == 1 {
+				matrix[r-1][c] = 0
+				ret[r-1][c] = step
 				b = append(b, []int{r - 1, c})
 			}
 			if c > 0 && matrix[r][c-1] == 1 {
+				matrix[r][c-1] = 0
+				ret[r][c-1] = step
 				b = append(b, []int{r, c - 1})
 			}
 			if r < len(matrix)-1 && matrix[r+1][c] == 1 {
+				matrix[r+1][c] = 0
+				ret[r+1][c] = step
 				b = append(b, []int{r + 1, c})
 			}
 			if c < len(matrix[0])-1 && matrix[r][c+1] == 1 {
+				matrix[r][c+1] = 0
+				ret[r][c+1] = step
 				b = append(b, []int{r, c + 1})
 			}
-		}
-
-		for i := 0; i < len(b); i++ {
-			r, c := b[i][0], b[i][1]
-			matrix[r][c] = 0
-			ret[r][c] = step
 		}
 		candi = b
 	}
