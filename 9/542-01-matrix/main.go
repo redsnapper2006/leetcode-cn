@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func updateMatrix(matrix [][]int) [][]int {
 	ret := make([][]int, len(matrix))
 	for i := 0; i < len(matrix); i++ {
