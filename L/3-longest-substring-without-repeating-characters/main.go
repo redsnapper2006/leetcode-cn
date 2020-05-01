@@ -24,9 +24,9 @@ func lengthOfLongestSubstring(s string) int {
 		}
 	}
 
-	if len(s) - start > ret {
-		return len(s) -start
-	}else {
+	if len(s)-start > ret {
+		return len(s) - start
+	} else {
 		return ret
 	}
 }
