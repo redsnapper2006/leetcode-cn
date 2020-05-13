@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func minSteps(n int) int {
 	if n == 1 {
 		return 0
