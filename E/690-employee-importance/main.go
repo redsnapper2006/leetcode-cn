@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type Employee struct {
 	Id           int
 	Importance   int
