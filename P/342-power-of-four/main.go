@@ -1,0 +1,30 @@
+package main
+
+import "fmt"
+
+func isPowerOfFour(num int) bool {
+	m := map[int]int{
+		1:          1,
+		4:          1,
+		16:         1,
+		64:         1,
+		256:        1,
+		1024:       1,
+		4096:       1,
+		16384:      1,
+		65536:      1,
+		262144:     1,
+		1048576:    1,
+		4194304:    1,
+		16777216:   1,
+		67108864:   1,
+		268435456:  1,
+		1073741824: 1,
+	}
+	_, ok := m[num]
+	return ok
+}
+
+func main() {
+	fmt.Println("a")
+}
