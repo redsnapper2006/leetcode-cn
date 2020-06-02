@@ -22,7 +22,7 @@ func findMinHeightTrees(n int, edges [][]int) []int {
 		link[e][s]++
 	}
 
-	for len(nodes) > 2 {
+	for len(link) > 2 {
 		oneGress := []int{}
 		refresh := [][]int{}
 		for k, v := range link {
@@ -39,20 +39,13 @@ func findMinHeightTrees(n int, edges [][]int) []int {
 		for i := 0; i < len(refresh); i++ {
 			delete(link[refresh[i][0]], refresh[i][1])
 		}
-		var n []int
-		for i := 0; i < len(nodes); i++ {
-			isFound := false
-			for j := 0; j < len(oneGress); j++ {
-				if nodes[i] == oneGress[j] {
-					isFound = true
-					break
-				}
-			}
-			if !isFound {
-				n = append(n, nodes[i])
-			}
+	}
+	if len(link) > 0 {
+		var ret []int
+		for k := range link {
+			ret = append(ret, k)
 		}
-		nodes = n
+		return ret
 	}
 
 	return nodes
