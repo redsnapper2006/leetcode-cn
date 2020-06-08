@@ -30,7 +30,7 @@ func quickSelect(nums []int, k, start, end int) int {
 }
 
 func wiggleSort(nums []int) {
-	if len(nums) == 1 {
+	if len(nums) <= 1 {
 		return
 	}
 
