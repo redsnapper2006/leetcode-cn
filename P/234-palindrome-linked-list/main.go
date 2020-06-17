@@ -40,6 +40,5 @@ func isPalindrome(head *ListNode) bool {
 }
 
 func main() {
-
 	fmt.Println("a")
 }
