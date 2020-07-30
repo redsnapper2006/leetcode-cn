@@ -3,31 +3,26 @@ package main
 import "fmt"
 
 func cuttingRope(n int) int {
-
-	buf := make([]int, n+1)
-
-	buf[1] = 1
-
-	for i := 2; i <= n; i++ {
-		max := -1
-		for j := 1; j <= i/2; j++ {
-			r := j * (i - j)
-			if r < buf[j]*(i-j) {
-				r = buf[j] * (i - j)
-			}
-			if r < j*buf[i-j] {
-				r = j * buf[i-j]
-			}
-			if r < buf[j]*buf[i-j] {
-				r = buf[j] * buf[i-j]
-			}
-			if r > max {
-				max = r
-			}
-		}
-		buf[i] = max
+	if n <= 3 {
+		return n - 1
 	}
-	return buf[n]
+	b := n % 3
+	rem := 1
+	x := 3
+	for a := n/3 - 1; a > 0; a /= 2 {
+		if a%2 == 1 {
+			rem = (rem * x) % 1000000007
+		}
+		x = (x * x) % 1000000007
+	}
+
+	if b == 0 {
+		return rem * 3 % 1000000007
+	}
+	if b == 1 {
+		return rem * 4 % 1000000007
+	}
+	return rem * 6 % 1000000007
 }
 
 func main() {
