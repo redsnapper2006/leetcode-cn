@@ -10,6 +10,7 @@ func isNumber(s string) bool {
 	if len(s) == 0 {
 		return false
 	}
+	s = strings.ToLower(s)
 	arr := strings.Split(s, "e")
 	if len(arr) > 2 {
 		return false
