@@ -1,0 +1,3 @@
+# No1175
+
+https://leetcode-cn.com/problems/prime-arrangements/
