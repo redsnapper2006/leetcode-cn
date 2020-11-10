@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"sort"
 )
 
 func nextPermutation(nums []int) {
@@ -58,7 +57,7 @@ func nextPermutation(nums []int) {
 	}
 
 	nums[idx], nums[replace] = nums[replace], nums[idx]
-	s, e := idx+1, len(nums)-1
+	s, e = idx+1, len(nums)-1
 	for s < e {
 		nums[s], nums[e] = nums[e], nums[s]
 		s++
