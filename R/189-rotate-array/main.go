@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func rotate(nums []int, k int) {
+func rotateV2(nums []int, k int) {
 	length := len(nums)
 	o := k % length
 	b := make([]int, o)
@@ -12,6 +12,30 @@ func rotate(nums []int, k int) {
 	copy(nums[o:length], nums[0:length-o])
 	copy(nums[0:o], b)
 	fmt.Println(nums)
+}
+
+func rotate(nums []int, k int) {
+	k %= len(nums)
+	s, e := 0, len(nums)-1
+	for s < e {
+		nums[s], nums[e] = nums[e], nums[s]
+		s++
+		e--
+	}
+
+	s, e = 0, k-1
+	for s < e {
+		nums[s], nums[e] = nums[e], nums[s]
+		s++
+		e--
+	}
+
+	s, e = k, len(nums)-1
+	for s < e {
+		nums[s], nums[e] = nums[e], nums[s]
+		s++
+		e--
+	}
 }
 
 func main() {
