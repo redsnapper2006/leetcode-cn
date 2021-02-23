@@ -4,16 +4,12 @@ impl Solution {
   pub fn merge_alternately(word1: String, word2: String) -> String {
     let mut b1: Vec<u8> = word1.as_bytes().to_vec();
     let mut b2: Vec<u8> = word2.as_bytes().to_vec();
-    if b1.len() > b2.len() {
-      for i in b2.len()..b1.len() {
-        b2.push(' ' as u8);
-      }
+    let mut size = b1.len();
+    if size < b2.len() {
+      size = b2.len();
     }
-    if b1.len() < b2.len() {
-      for i in b1.len()..b2.len() {
-        b1.push(' ' as u8);
-      }
-    }
+    b1.resize(size, ' ' as u8);
+    b2.resize(size, ' ' as u8);
     let a = b1
       .iter()
       .zip(b2.iter())
