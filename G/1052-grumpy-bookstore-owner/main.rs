@@ -14,13 +14,7 @@ impl Solution {
       mad[i] = madsum;
       common[i] = commonsum;
     }
-    // for x in &mad {
-    //     println!("mad {}", x);
-    // }
-    // for x in &common {
-    //     println!("common {}", x);
-    // }
-    // println!("madsum comosum {} {}", madsum, commonsum);
+
     let mut max = 0;
     for i in (x - 1) as usize..customers.len() {
       // println!("idx {}", i);
