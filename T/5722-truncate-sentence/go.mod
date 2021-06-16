@@ -1,3 +1,3 @@
-module redsnapper2006/leetcode-cn/aaaa
+module redsnapper2006/leetcode-cn/truncate-sentence
 
 go 1.16
