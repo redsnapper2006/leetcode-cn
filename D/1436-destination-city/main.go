@@ -10,7 +10,7 @@ func destCity(paths [][]string) string {
 		out[s]++
 		in[d]++
 	}
-	for k, v := range in {
+	for k := range in {
 		_, ok := out[k]
 		if !ok {
 			return k

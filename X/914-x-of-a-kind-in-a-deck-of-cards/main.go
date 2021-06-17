@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func hasGroupsSizeX(deck []int) bool {
 	M := make(map[int]int)
 	for i := 0; i < len(deck); i++ {

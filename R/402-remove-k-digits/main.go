@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func removeKdigits(num string, k int) string {
 	if len(num) == 0 || k >= len(num) {
 		return "0"

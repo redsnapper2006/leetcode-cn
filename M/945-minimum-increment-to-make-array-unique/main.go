@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func minIncrementForUnique(A []int) int {
 	if len(A) <= 1 {
 		return 0

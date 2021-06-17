@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func searchInsert(nums []int, target int) int {
 	s, e := 0, len(nums)-1
 

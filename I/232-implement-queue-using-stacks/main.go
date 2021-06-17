@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 type MyQueue struct {
 	Q []int
 }

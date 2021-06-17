@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func findRestaurant(list1 []string, list2 []string) []string {
 	base, loop := list1, list2
 	if len(list1) < len(list2) {

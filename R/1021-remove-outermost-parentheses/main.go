@@ -1,5 +1,12 @@
 package main
 
+import (
+	"fmt"
+)
+
+
+
+
 func removeOuterParentheses(S string) string {
 	var stack []byte
 

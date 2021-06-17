@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func findDiagonalOrder(nums [][]int) []int {
 	if len(nums) == 0 {
 		return []int{}

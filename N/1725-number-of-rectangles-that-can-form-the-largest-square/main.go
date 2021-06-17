@@ -1,5 +1,11 @@
 package main
 
+import (
+	"fmt"
+)
+
+
+
 func countGoodRectangles(rectangles [][]int) int {
 	M := map[int]int{}
 	for _, r := range rectangles {

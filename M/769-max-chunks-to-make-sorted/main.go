@@ -1,7 +1,10 @@
 package main
 
-func maxChunksToSorted(arr []int) int {
+import (
+	"fmt"
+)
 
+func maxChunksToSorted(arr []int) int {
 	M := make(map[int]int)
 	for i := 0; i < len(arr); i++ {
 		M[arr[i]] = i

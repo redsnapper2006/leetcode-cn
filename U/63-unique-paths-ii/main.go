@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 	if len(obstacleGrid) == 0 || len(obstacleGrid[0]) == 0 {
 		return 0

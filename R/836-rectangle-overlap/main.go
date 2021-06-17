@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func isRectangleOverlap(rec1 []int, rec2 []int) bool {
 	x11, y11, x12, y12 := rec1[0], rec1[1], rec1[2], rec1[3]
 	x21, y21, x22, y22 := rec2[0], rec2[1], rec2[2], rec2[3]

@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func singleNumbers(nums []int) []int {
 	sum := 0
 	for i := 0; i < len(nums); i++ {

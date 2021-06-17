@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func maxRotateFunction(A []int) int {
 	sum := 0
 	accum := 0

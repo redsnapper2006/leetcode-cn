@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func findNthDigit(n int) int {
 	times := 9
 	digit := 1

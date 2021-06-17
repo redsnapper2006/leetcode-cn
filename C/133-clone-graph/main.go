@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 type Node struct {
 	Val       int
 	Neighbors []*Node

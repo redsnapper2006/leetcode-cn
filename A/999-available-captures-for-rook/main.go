@@ -1,7 +1,10 @@
 package main
 
-func numRookCaptures(board [][]byte) int {
+import (
+	"fmt"
+)
 
+func numRookCaptures(board [][]byte) int {
 	// find ROOK
 	var r, c int
 	for i := 0; i < len(board); i++ {

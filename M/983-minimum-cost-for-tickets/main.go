@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func mincostTickets(days []int, costs []int) int {
 	if len(days) == 0 {
 		return 0

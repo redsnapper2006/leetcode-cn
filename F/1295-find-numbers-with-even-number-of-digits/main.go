@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func findNumbers(nums []int) int {
 	c := 0
 	for i := 0; i < len(nums); i++ {

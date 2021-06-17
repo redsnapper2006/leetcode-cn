@@ -1,7 +1,10 @@
 package main
 
-func numberOfSubarrays(nums []int, k int) int {
+import (
+	"fmt"
+)
 
+func numberOfSubarrays(nums []int, k int) int {
 	s := 0
 	c := 0
 	p := 0

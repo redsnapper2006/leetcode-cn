@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func minRemoveToMakeValid(s string) string {
 	var stack []byte
 	var indexStack []int

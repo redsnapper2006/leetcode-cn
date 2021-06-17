@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func wordBreak(s string, wordDict []string) bool {
+func wordBreak2(s string, wordDict []string) bool {
 	// fmt.Println(s)
 	if len(s) == 0 {
 		return true
@@ -14,8 +14,8 @@ func wordBreak(s string, wordDict []string) bool {
 	for _, v := range wordDict {
 		// fmt.Println("go :", v)
 		if strings.HasPrefix(s, v) {
-			ret := wordBreak(s[len(v):len(s)], wordDict)
-			if ret == true {
+			ret := wordBreak(s[len(v):], wordDict)
+			if ret {
 				return true
 			}
 		}
@@ -23,7 +23,7 @@ func wordBreak(s string, wordDict []string) bool {
 	return false
 }
 
-func main() {
+func main2() {
 
 	// fmt.Println("helloworld"[1:3])
 	// fmt.Println(wordBreak("leetcode", []string{"leet", "code"}))

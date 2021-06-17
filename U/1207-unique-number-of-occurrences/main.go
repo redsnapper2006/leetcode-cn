@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func uniqueOccurrences(arr []int) bool {
 	buf := make(map[int]int)
 	for i := 0; i < len(arr); i++ {

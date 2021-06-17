@@ -16,17 +16,16 @@ func reverseStringSwap(s []byte) {
 	}
 }
 
-
 func reverseString(s []byte) {
 	if len(s) <= 1 {
 		return
 	}
 	t := s[0]
-	for i:=1;i<len(s);i++ {
+	for i := 1; i < len(s); i++ {
 		s[i-1] = s[i]
 	}
-	s[len(s)-1] =t
-	return reverseString(s[0:len(s)-1])
+	s[len(s)-1] = t
+	reverseString(s[0 : len(s)-1])
 }
 
 func main() {

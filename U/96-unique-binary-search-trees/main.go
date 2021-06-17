@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func numTrees(n int) int {
 	if n <= 1 {
 		return 1

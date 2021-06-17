@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func canReach(arr []int, start int) bool {
 	buf := make([]int, len(arr))
 	stack := []int{start}

@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func strWithout3a3b(A int, B int) string {
 	min := A
 	max := B

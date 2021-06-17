@@ -8,15 +8,15 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-type KthLargest struct {
+type KthLargest2 struct {
 	Head *TreeNode
 	K    int
 	C    int
 }
 
-func Constructor(k int, nums []int) KthLargest {
+func Constructor2(k int, nums []int) KthLargest2 {
 	t := TreeNode{Val: 1<<63 - 1, Left: nil, Right: nil}
-	b := KthLargest{Head: &t, K: k, C: 0}
+	b := KthLargest2{Head: &t, K: k, C: 0}
 
 	for i := 0; i < len(nums); i++ {
 		b.Add(nums[i])
@@ -24,7 +24,7 @@ func Constructor(k int, nums []int) KthLargest {
 	return b
 }
 
-func (this *KthLargest) Add(val int) int {
+func (this *KthLargest2) Add(val int) int {
 	if this.C < this.K || this.Head.Val < val {
 		if val <= this.Head.Val {
 			t := TreeNode{Val: val, Left: nil, Right: this.Head}
@@ -45,7 +45,7 @@ func (this *KthLargest) Add(val int) int {
 	return this.Head.Val
 }
 
-func (this *KthLargest) Print() {
+func (this *KthLargest2) Print() {
 	p := this.Head
 
 	for p != nil {
@@ -53,8 +53,9 @@ func (this *KthLargest) Print() {
 		p = p.Right
 	}
 }
-func main() {
-	o := Constructor(3, []int{4, 5, 8, 2})
+
+func main2() {
+	o := Constructor2(3, []int{4, 5, 8, 2})
 	fmt.Println("###")
 	o.Print()
 	o.Add(3) // returns 4

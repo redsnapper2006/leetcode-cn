@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 type MyHashMap struct {
 	B [][]int
 }

@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func maximalSquare(matrix [][]byte) int {
 	if len(matrix) == 0 || len(matrix[0]) == 0 {
 		return 0

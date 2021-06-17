@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func findRepeatedDnaSequences(s string) []string {
 	M := make(map[string]int)
 	for i := 0; i < len(s)-10+1; i++ {

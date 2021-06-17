@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func partitionLabels(S string) []int {
 	M := make(map[byte]int)
 	for i := 0; i < len(S); i++ {

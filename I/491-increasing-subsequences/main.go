@@ -49,7 +49,7 @@ func findSubsequences(nums []int) [][]int {
 			num[i] = v
 		}
 		r = append(r, num)
-	}#
+	}
 	return r
 }
 

@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 type MyCircularQueue struct {
 	Q []int
 	C int
