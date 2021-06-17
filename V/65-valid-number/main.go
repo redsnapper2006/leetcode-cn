@@ -6,7 +6,7 @@ import (
 )
 
 func isNumber(s string) bool {
-	s = strings.TrimSpace(s)
+	s = strings.ToLower(strings.TrimSpace(s))
 	if len(s) == 0 {
 		return false
 	}
@@ -32,6 +32,10 @@ func isNumber(s string) bool {
 	if !((buf[sIdx] <= '9' && buf[sIdx] >= '0') || (buf[sIdx] == '.')) {
 		return false
 	}
+
+	// if buf[sIdx] == '0' && sIdx < len(buf)-1 {
+	// 	return false
+	// }
 
 	isFirstDot := true
 	for i := sIdx; i < len(buf); i++ {
