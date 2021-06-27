@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 func countSubIslands(grid1 [][]int, grid2 [][]int) int {
-
 	var dfs func(grid1 [][]int, grid2 [][]int, x, y int, status bool) bool
 	dfs = func(grid1 [][]int, grid2 [][]int, x, y int, status bool) bool {
 		curStatus := status && grid1[x][y] == 1
