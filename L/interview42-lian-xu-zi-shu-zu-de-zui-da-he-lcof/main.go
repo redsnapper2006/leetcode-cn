@@ -26,6 +26,26 @@ func maxSubArray(nums []int) int {
 	return max
 }
 
+func maxSubArray2(nums []int) int {
+	if len(nums) == 1 {
+		return nums[0]
+	}
+	ret := nums[0]
+	min := 0
+	sum := 0
+	for _, v := range nums {
+		sum += v
+
+		if sum-min > ret {
+			ret = sum - min
+		}
+		if min > sum {
+			min = sum
+		}
+	}
+	return ret
+}
+
 func main() {
 	fmt.Println("a")
 }
