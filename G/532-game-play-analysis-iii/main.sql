@@ -1,3 +1,16 @@
+-- SELECT
+--   a.player_id,
+--   b.event_date,
+--   sum(a.games_played) as games_played_so_far
+-- FROM
+--   Activity a,
+--   Activity b
+-- WHERE
+--   a.player_id = b.player_id
+--   AND a.event_date <= b.event_date
+-- GROUP BY
+--   b.player_id,
+--   b.event_date
 SELECT
   a.player_id,
   a.event_date,
