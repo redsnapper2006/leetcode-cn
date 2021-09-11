@@ -25,6 +25,35 @@ func findIntegers(num int) int {
 	return cnt + 1
 }
 
+func findIntegers_SlowVersion(n int) int {
+	ret := 1
+	start := 1
+	for start <= n {
+		isOne := false
+		idx := -1
+		for i := 30; i >= 0; i-- {
+			if start&(1<<i) > 0 {
+				if !isOne {
+					isOne = true
+				} else {
+					idx = i
+					break
+				}
+			} else {
+				isOne = false
+			}
+		}
+		if idx == -1 {
+			start++
+			ret++
+		} else {
+			start |= 1<<(idx+2) - 1
+			start++
+		}
+	}
+	return ret
+}
+
 func main() {
 	for i := 1; i <= 64; i = i * 2 {
 		fmt.Println(i, findIntegers(i)-1)
