@@ -7,36 +7,34 @@ import (
 
 type Arr [][]int
 
-func (ss Arr) Len() int {
-	return len(ss)
+func (p Arr) Len() int {
+	return len(p)
 }
 
-func (ss Arr) Swap(i, j int) {
-	ss[i], ss[j] = ss[j], ss[i]
+func (p Arr) Swap(i, j int) {
+	p[i], p[j] = p[j], p[i]
 }
 
-func (ss Arr) Less(i, j int) bool {
-	if ss[i][0] == ss[j][0] {
-		return ss[i][1] > ss[j][1]
+func (p Arr) Less(i, j int) bool {
+	if p[i][0] == p[j][0] {
+		return p[i][1] > p[j][1]
 	}
 
-	return ss[i][0] < ss[j][0]
+	return p[i][0] < p[j][0]
 }
 
 func removeCoveredIntervals(intervals [][]int) int {
-	ret := 0
 	sort.Sort(Arr(intervals))
+
 	base := intervals[0][1]
+	cnt := 1
 	for i := 1; i < len(intervals); i++ {
-		// fmt.Println(i, base)
-		if intervals[i][1] <= base {
-			ret++
-		} else {
+		if intervals[i][1] > base {
 			base = intervals[i][1]
+			cnt++
 		}
 	}
-
-	return len(intervals) - ret
+	return cnt
 }
 
 func main() {
