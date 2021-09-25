@@ -24,7 +24,6 @@ func volunteerDeployment(finalCnt []int, totalNum int64, edges [][]int, plans []
 		}
 		em[y] = append(em[y], x)
 	}
-
 	for i := len(plans) - 1; i >= 0; i-- {
 		plan := plans[i]
 		pn := plan[0]
@@ -58,7 +57,7 @@ func volunteerDeployment(finalCnt []int, totalNum int64, edges [][]int, plans []
 		ret = append(ret, v+xv*x[i])
 	}
 
-	return buf
+	return ret
 }
 
 func main() {
