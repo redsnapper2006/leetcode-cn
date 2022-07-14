@@ -45,6 +45,9 @@ func (wf *WordFilter) F(prefix string, suffix string) int {
 	p := &wf.P
 	for i := 0; i < len(prefix); i++ {
 		offset := int(prefix[i] - byte('a'))
+		if len(p.T) == 0 {
+			return -1
+		}
 		p = &(p.T[offset])
 	}
 	preIdx := p.I
@@ -52,6 +55,9 @@ func (wf *WordFilter) F(prefix string, suffix string) int {
 	s := &wf.S
 	for i := len(suffix) - 1; i >= 0; i-- {
 		offset := int(suffix[i] - byte('a'))
+		if len(s.T) == 0 {
+			return -1
+		}
 		s = &(s.T[offset])
 	}
 	sufIdx := s.I
