@@ -25,7 +25,9 @@ func pruneTree(root *TreeNode) *TreeNode {
 		}
 		return left || right || root.Val == 1
 	}
-	recur(root)
+	if !recur(root) {
+		return nil
+	}
 	return root
 }
 
