@@ -2,9 +2,6 @@ package main
 
 import "fmt"
 
-
-
-
 func fractionAddition(expression string) string {
 	numerator := []int{}
 	denominator := []int{}
@@ -48,8 +45,6 @@ func fractionAddition(expression string) string {
 	for i, nume := range numerator {
 		sum += aggr / denominator[i] * nume
 	}
-	// fmt.Println(numerator, denominator)
-	// fmt.Println(sum, aggr)
 
 	if sum == 0 {
 		return "0/1"
