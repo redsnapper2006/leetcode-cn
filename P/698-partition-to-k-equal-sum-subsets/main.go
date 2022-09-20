@@ -15,8 +15,8 @@ func canPartitionKSubsets(nums []int, k int) bool {
 	}
 
 	gCnt := sum / k
-	sort.Ints(nums)
-	if nums[len(nums)-1] > gCnt {
+	sort.Sort(sort.Reverse(sort.IntSlice(nums)))
+	if nums[0] > gCnt {
 		return false
 	}
 	group := make([]int, k)
@@ -28,6 +28,10 @@ func canPartitionKSubsets(nums []int, k int) bool {
 		}
 
 		for i := 0; i < k; i++ {
+			if i > 0 && nIdx == 0 {
+				break
+			}
+
 			if i > 0 && group[i] == group[i-1] {
 				continue
 			}
