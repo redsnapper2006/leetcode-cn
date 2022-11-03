@@ -6,36 +6,25 @@ func maxRepeating(sequence string, word string) int {
 	if len(sequence) < len(word) {
 		return 0
 	}
+
 	idx := 0
 	ret := 0
-	for idx < len(sequence) {
-		for idx < len(sequence) && sequence[idx] != word[0] {
-			idx++
-		}
-		if idx == len(sequence) {
-			break
-		}
-		loop := 0
-		for idx+len(word) <= len(sequence) {
-			isMatch := true
-			for i := 0; i < len(word); i++ {
-				if word[i] != sequence[idx+i] {
-					isMatch = false
-					break
-				}
+	for idx+len(word) <= len(sequence) {
+		if sequence[idx:idx+len(word)] == word {
+			cnt := 0
+			i := idx
+			for i+len(word) <= len(sequence) && sequence[i:i+len(word)] == word {
+				cnt++
+				i += len(word)
 			}
-			if isMatch {
-				loop++
-				idx += len(word)
-			} else {
-				break
+			if cnt > ret {
+				ret = cnt
 			}
 		}
+
 		idx++
-		if loop > ret {
-			ret = loop
-		}
 	}
+
 	return ret
 }
 
