@@ -15,7 +15,7 @@ impl Solution {
         m.insert(item[0], item[1]);
       }
     }
-    // let keys: Vec<i32> = m.iter().map(|(k, v)| *k).collect::<Vec<i32>>();
+
     let mut keys: Vec<i32> = m.keys().map(|x| *x).collect();
     keys.sort();
     let mut ret: Vec<Vec<i32>> = Vec::new();
