@@ -3,7 +3,7 @@ struct Solution {}
 use std::collections::HashMap;
 impl Solution {
   pub fn count_balls(low_limit: i32, high_limit: i32) -> i32 {
-    let mut m: HashMap<i32, i32> = HashMap::new();
+    let mut m: [i32; 54] = [0; 54];
     for i in low_limit..high_limit + 1 {
       let mut sum = 0;
       let mut b = i;
@@ -13,17 +13,13 @@ impl Solution {
         b /= 10;
       }
 
-      if !m.contains_key(&sum) {
-        m.insert(sum, 1);
-      } else {
-        let v = m.get_mut(&sum).unwrap();
-        *v += 1;
-      }
+      m[sum as usize] += 1;
     }
+
     let mut max = 0;
-    for (k, v) in &m {
-      if *v > max {
-        max = *v;
+    for v in m {
+      if v > max {
+        max = v;
       }
     }
     max
