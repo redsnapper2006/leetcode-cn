@@ -2,9 +2,9 @@ struct Solution {}
 
 impl Solution {
   pub fn pivot_integer(n: i32) -> i32 {
-    let sum = n*(n+1)/2;
+    let sum = n * (n + 1) / 2;
     let v = (sum as f64).sqrt();
-    if v as i32 *v as i32 == sum {
+    if v as i32 * v as i32 == sum {
       v as i32
     } else {
       -1
