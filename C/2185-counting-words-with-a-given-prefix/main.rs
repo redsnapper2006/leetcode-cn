@@ -2,6 +2,13 @@ struct Solution {}
 
 impl Solution {
   pub fn prefix_count(words: Vec<String>, pref: String) -> i32 {
+    words
+      .iter()
+      .filter(|w| w.len() >= pref.len() && w.as_str().starts_with(pref.as_str()))
+      .count() as i32
+  }
+
+  pub fn prefix_count2(words: Vec<String>, pref: String) -> i32 {
     let n: usize = pref.len();
     let mut ret: i32 = 0;
     for w in words {
