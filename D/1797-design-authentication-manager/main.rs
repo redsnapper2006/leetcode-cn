@@ -18,15 +18,13 @@ impl AuthenticationManager {
   }
 
   fn renew(&mut self, token_id: String, current_time: i32) {
-    if !self.t_m.contains_key(&token_id) {
-      return;
+    if let Some(t) = self.t_m.get_mut(&token_id) {
+      if *t + self.t_t_l <= current_time {
+        self.t_m.remove(&token_id);
+        return;
+      }
+      *t = current_time;
     }
-    let mut v = self.t_m.get_mut(&token_id).unwrap();
-    if *v + self.t_t_l <= current_time {
-      self.t_m.remove(&token_id);
-      return;
-    }
-    *v = current_time;
   }
 
   fn count_unexpired_tokens(&mut self, current_time: i32) -> i32 {
