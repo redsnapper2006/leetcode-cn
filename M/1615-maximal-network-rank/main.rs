@@ -18,8 +18,6 @@ impl Solution {
       sum_gress[row as usize] = sum;
     });
 
-
-
     let mut ret: i32 = 0;
     (0..n).for_each(|row| {
       (0..n).for_each(|col| {
