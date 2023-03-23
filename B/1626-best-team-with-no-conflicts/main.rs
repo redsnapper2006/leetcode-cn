@@ -1,8 +1,39 @@
 struct Solution {}
 
-use std::collections::HashMap;
 impl Solution {
   pub fn best_team_score(scores: Vec<i32>, ages: Vec<i32>) -> i32 {
+    let n = scores.len();
+    let mut myzip: Vec<(i32, i32)> = ages
+      .into_iter()
+      .zip(scores.into_iter())
+      .collect::<Vec<(i32, i32)>>();
+
+    myzip.sort_by(|x, y| {
+      let xa = &x.0;
+      let ya = &y.0;
+      let xs = &x.1;
+      let ys = &y.1;
+      if xa != ya {
+        return xa.cmp(ya);
+      }
+      xs.cmp(ys)
+    });
+
+    let mut dp: Vec<i32> = vec![0; n];
+    dp[0] = myzip[0].1;
+    (0..myzip.len()).for_each(|i| {
+      let mut d: i32 = myzip[i].1;
+      (0..i).rev().for_each(|j| {
+        if myzip[i].1 >= myzip[j].1 {
+          d = d.max(myzip[i].1 + dp[j]);
+        }
+      });
+      dp[i] = d;
+    });
+    *dp.iter().max().unwrap()
+  }
+
+  pub fn best_team_score2(scores: Vec<i32>, ages: Vec<i32>) -> i32 {
     let mut cached: HashMap<usize, i32> = HashMap::new();
     let mut myzip: Vec<(i32, i32)> = ages
       .into_iter()
