@@ -40,8 +40,8 @@ impl Solution {
           if *res < max_v - min_v {
             *res = max_v - min_v;
           }
-          recur(rc.borrow().left.clone(), min_v, max_v, res);
-          recur(rc.borrow().right.clone(), min_v, max_v, res);
+          recur(rc.borrow_mut().left.take(), min_v, max_v, res);
+          recur(rc.borrow_mut().right.take(), min_v, max_v, res);
         }
       }
     }
@@ -49,7 +49,6 @@ impl Solution {
     res
   }
 }
-
 fn main() {
   println!(
     "{}",
