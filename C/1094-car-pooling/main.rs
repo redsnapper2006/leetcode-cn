@@ -8,10 +8,10 @@ impl Solution {
         max = i[2];
       }
     }
-    let mut buf: Vec<i32> = vec![0; max as usize];
+    let mut buf: Vec<i32> = vec![0; max as usize + 1];
     for i in &trips {
-      buf[i[1] as usize - 1] += i[0];
-      buf[i[2] as usize - 1] -= i[0];
+      buf[i[1] as usize] += i[0];
+      buf[i[2] as usize] -= i[0];
     }
     let mut sum = 0;
     for i in 0..max {
