@@ -10,4 +10,10 @@ impl Solution {
     });
     cnt
   }
+
+  pub fn count_tested_devices(battery_percentages: Vec<i32>) -> i32 {
+    battery_percentages
+      .iter()
+      .fold(0, |aggr, &v| if v <= aggr { aggr } else { aggr + 1 })
+  }
 }
