@@ -1,15 +1,13 @@
 # leetcode-cn
 
-* No2104 单调栈
-
 ## REVIEW
 
-* No72
+- No72
 
-* No152
+- No152
 
-* No4
+- No4
 
-* No214
+- No214
 
-* No887
+- No887
