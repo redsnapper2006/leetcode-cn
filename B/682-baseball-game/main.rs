@@ -5,7 +5,9 @@ impl Solution {
     let mut stack: Vec<i32> = Vec::new();
     operations.iter().for_each(|oper| {
       match oper.as_str() {
-        "C" => {stack.pop();},
+        "C" => {
+          stack.pop();
+        }
         "D" => stack.push(stack[stack.len() - 1] * 2),
         "+" => stack.push(stack[stack.len() - 1] + stack[stack.len() - 2]),
         _ => stack.push(oper.parse::<i32>().unwrap_or(0)),
