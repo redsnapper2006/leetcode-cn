@@ -4,6 +4,27 @@ impl Solution {
   pub fn max_score(grid: Vec<Vec<i32>>) -> i32 {
     let mut dp: Vec<Vec<i32>> = vec![vec![0; grid[0].len()]; grid.len()];
     let mut ans: i32 = i32::MIN;
+    (0..grid.len()).for_each(|row| {
+      (0..grid[0].len()).for_each(|col| {
+        let mut min: i32 = grid[row][col];
+        if col > 0 {
+          min = min.min(dp[row][col - 1]);
+          ans = ans.max(grid[row][col] - dp[row][col - 1]);
+        }
+        if row > 0 {
+          min = min.min(dp[row - 1][col]);
+          ans = ans.max(grid[row][col] - dp[row - 1][col]);
+        }
+        dp[row][col] = min;
+      });
+    });
+
+    ans
+  }
+
+  pub fn max_score2(grid: Vec<Vec<i32>>) -> i32 {
+    let mut dp: Vec<Vec<i32>> = vec![vec![0; grid[0].len()]; grid.len()];
+    let mut ans: i32 = i32::MIN;
     (0..grid.len()).rev().for_each(|row| {
       (0..grid[0].len()).rev().for_each(|col| {
         let mut v: i32 = dp[row][col];
