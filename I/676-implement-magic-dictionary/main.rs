@@ -4,7 +4,7 @@ struct MagicDictionary {
 
 impl MagicDictionary {
   fn new() -> Self {
-    MagicDictionary { d : Vec::new()}
+    MagicDictionary { d: Vec::new() }
   }
 
   fn build_dict(&mut self, dictionary: Vec<String>) {
@@ -12,12 +12,12 @@ impl MagicDictionary {
   }
 
   fn search(&self, search_word: String) -> bool {
-    let mut idx : usize = 0;
+    let mut idx: usize = 0;
     while idx < self.d.len() {
       let candi = &self.d[idx];
       if candi.len() == search_word.len() {
-        let mut offset : usize = 0;
-        let mut cnt : i32 = 0;
+        let mut offset: usize = 0;
+        let mut cnt: i32 = 0;
         while offset < candi.len() {
           if candi.as_bytes()[offset] != search_word.as_bytes()[offset] {
             cnt += 1;
@@ -25,13 +25,13 @@ impl MagicDictionary {
               break;
             }
           }
-          offset+=1;
+          offset += 1;
         }
         if cnt == 1 {
           return true;
         }
       }
-      idx+=1;
+      idx += 1;
     }
     false
   }
