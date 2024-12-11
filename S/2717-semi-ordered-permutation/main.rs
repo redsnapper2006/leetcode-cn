@@ -13,9 +13,6 @@ impl Solution {
         max = idx;
       }
     });
-    (match min > max {
-      true => (min + nn - 1 - max - 1),
-      false => min + nn - 1 - max,
-    }) as i32
+    (min + nn - 1 - max - (min > max) as usize) as i32
   }
 }
