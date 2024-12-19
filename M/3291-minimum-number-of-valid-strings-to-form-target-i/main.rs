@@ -30,46 +30,6 @@ impl Solution {
 
     dp[0]
   }
-
-  pub fn min_valid_strings2(words: Vec<String>, target: String) -> i32 {
-    fn dfs(words: &Vec<Vec<u8>>, target: &Vec<u8>, idx: usize, dp: &mut Vec<i32>) -> i32 {
-      if idx == target.len() {
-        return 0;
-      }
-
-      if dp[idx] != target.len() as i32 + 1 {
-        return dp[idx];
-      }
-      let mut min: i32 = target.len() as i32 + 1;
-      words.iter().for_each(|word| {
-        let mut ii: usize = 0;
-        while ii < word.len() && idx + ii < target.len() {
-          if word[ii] != target[idx + ii] {
-            break;
-          }
-          let v = dfs(words, target, idx + ii + 1, dp);
-          if v != -1 {
-            min = min.min(v);
-          }
-          ii += 1;
-        }
-      });
-      if min != target.len() as i32 + 1 {
-        dp[idx] = min + 1;
-      } else {
-        dp[idx] = -1
-      }
-      dp[idx]
-    }
-
-    let ww = words
-      .iter()
-      .map(|word| word.as_bytes().to_vec())
-      .collect::<Vec<Vec<u8>>>();
-    let tt = target.as_bytes().to_vec();
-    let mut dp: Vec<i32> = vec![target.len() as i32 + 1; target.len()];
-    dfs(&ww, &tt, 0, &mut dp)
-  }
 }
 
 fn main() {

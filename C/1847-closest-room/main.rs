@@ -4,14 +4,10 @@ impl Solution {
   pub fn closest_room(rooms: Vec<Vec<i32>>, queries: Vec<Vec<i32>>) -> Vec<i32> {
     let mut rooms = rooms;
     rooms.sort_by(|x, y| {
-      let x0 = x[0];
-      let x1 = x[1];
-      let y0 = y[0];
-      let y1 = y[1];
-      if x1 == y1 {
-        x0.cmp(&y0)
+      if x[1] == y[1] {
+        x[0].cmp(&y[0])
       } else {
-        x1.cmp(&y1)
+        x[1].cmp(&y[1])
       }
     });
 
@@ -53,7 +49,7 @@ impl Solution {
         } else if ll2 == 0 {
           ret = offset[0];
         } else {
-          ret = if ((offset[ll2 - 1] - q2[idx1 as usize].1[0]).abs())
+          ret = if (offset[ll2 - 1] - q2[idx1 as usize].1[0]).abs()
             > (offset[ll2] - q2[idx1 as usize].1[0]).abs()
           {
             offset[ll2]
