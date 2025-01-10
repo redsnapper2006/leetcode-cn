@@ -1,3 +1,3 @@
-# NoLCOF-II-036
+# NoLCR036
 
-https://leetcode-cn.com/problems/8Zf90G/
+<https://leetcode-cn.com/problems/8Zf90G/>

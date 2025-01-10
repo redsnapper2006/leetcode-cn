@@ -1,3 +1,3 @@
-# NoLCR37
+# NoLCR037
 
-https://leetcode.cn/problems/XagZNi/
+<https://leetcode.cn/problems/XagZNi/>
