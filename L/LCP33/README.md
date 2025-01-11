@@ -1,3 +1,3 @@
 # NoLCP33
 
-https://leetcode-cn.com/problems/o8SXZn/
+<https://leetcode.cn/problems/o8SXZn/>
