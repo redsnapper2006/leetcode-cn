@@ -1,0 +1,8 @@
+select
+  *
+from
+  products
+where
+  description REGEXP '^.+SN[0-9]{4}-[0-9]{4}[^0-9]*$'
+order by
+  product_id
