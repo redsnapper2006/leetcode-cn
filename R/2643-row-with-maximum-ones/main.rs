@@ -1,17 +1,17 @@
 impl Solution {
   pub fn row_and_maximum_ones(mat: Vec<Vec<i32>>) -> Vec<i32> {
-    let mut buf: Vec<(i32, usize)> = mat
+    mat
       .iter()
       .enumerate()
-      .map(|(idx, row)| (row.iter().sum(), idx))
-      .collect::<Vec<(i32, usize)>>();
-    buf.sort_by(|a, b| {
-      if a.0 == b.0 {
-        a.1.cmp(&b.1)
-      } else {
-        b.0.cmp(&a.0)
-      }
-    });
-    vec![buf[0].1 as i32, buf[0].0]
+      .map(|(idx, row)| (row.iter().sum(), idx as i32))
+      .collect::<Vec<(i32, i32)>>()
+      .iter()
+      .fold(vec![-1, 0], |aggr, (c, i)| {
+        if c > aggr[1] || c == aggr[1] && i < aggr[0] {
+          vec![i, c]
+        } else {
+          aggr
+        }
+      })
   }
 }
