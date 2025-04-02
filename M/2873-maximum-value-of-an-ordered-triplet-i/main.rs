@@ -2,6 +2,20 @@ struct Solution {}
 
 impl Solution {
   pub fn maximum_triplet_value(nums: Vec<i32>) -> i64 {
+    let mut max_i: i64 = 0;
+    let mut max_diff: i64 = 0;
+    let mut ans: i64 = 0;
+    nums.iter().for_each(|&v| {
+      let v = v as i64;
+      ans = ans.max(max_diff * v);
+      max_diff = max_diff.max(max_i - v);
+      max_i = max_i.max(v);
+    });
+
+    ans
+  }
+
+  pub fn maximum_triplet_value2(nums: Vec<i32>) -> i64 {
     let mut buf: Vec<[i32; 2]> = vec![[0; 2]; nums.len()];
 
     let mut max: i32 = 0;
