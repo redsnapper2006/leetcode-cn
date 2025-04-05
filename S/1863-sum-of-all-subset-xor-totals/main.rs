@@ -2,6 +2,14 @@ struct Solution {}
 
 impl Solution {
   pub fn subset_xor_sum(nums: Vec<i32>) -> i32 {
+    let mut or: i32 = 0;
+    nums.iter().for_each(|v| {
+      or |= v;
+    });
+    or << (nums.len() - 1)
+  }
+
+  pub fn subset_xor_sum2(nums: Vec<i32>) -> i32 {
     let mut buf: Vec<i32> = vec![0, nums[0]];
     for i in 1..nums.len() {
       let size = buf.len();
