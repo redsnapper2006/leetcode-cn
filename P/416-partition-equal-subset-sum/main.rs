@@ -6,6 +6,34 @@ impl Solution {
     if sum % 2 == 1 {
       return false;
     }
+    let mut cache: Vec<bool> = vec![false; sum as usize / 2 + 1];
+    cache[0] = true;
+
+    let mut idx: usize = 0;
+    while idx < nums.len() {
+      if nums[idx] > sum / 2 {
+        return false;
+      }
+      (nums[idx]..=sum / 2).rev().for_each(|v| {
+        if v - nums[idx] < 0 {
+          return;
+        }
+        cache[v] |= cache[v - nums[idx]];
+      });
+      if cache[sum as usize / 2] {
+        return true;
+      }
+      idx += 1;
+    }
+
+    false
+  }
+
+  pub fn can_partition2(nums: Vec<i32>) -> bool {
+    let sum = nums.iter().sum::<i32>();
+    if sum % 2 == 1 {
+      return false;
+    }
     let mut cache: Vec<Vec<i32>> = vec![];
 
     let mut idx: usize = 0;
