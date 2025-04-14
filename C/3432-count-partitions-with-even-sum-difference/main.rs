@@ -9,4 +9,12 @@ impl Solution {
     });
     ans
   }
+
+  pub fn count_partitions(nums: Vec<i32>) -> i32 {
+    if nums.iter().sum::<i32>() % 2 == 0 {
+      nums.len() as i32 - 1
+    } else {
+      0
+    }
+  }
 }
