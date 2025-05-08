@@ -2,7 +2,7 @@ use std::collections::VecDeque;
 impl Solution {
   pub fn min_time_to_reach(move_time: Vec<Vec<i32>>) -> i32 {
     let mut dp: Vec<Vec<i32>> = vec![vec![i32::MAX; move_time[0].len()]; move_time.len()];
-    move_time[0][0] = 0;
+    dp[0][0] = 0;
     let mut q: VecDeque<(usize, usize, i32)> = VecDeque::new();
     q.push_back((0, 0, 0));
     while q.len() > 0 {
