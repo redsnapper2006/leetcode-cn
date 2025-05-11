@@ -1,3 +1,3 @@
 # No1550
 
-https://leetcode-cn.com/problems/three-consecutive-odds/
+<https://leetcode.cn/problems/three-consecutive-odds>
