@@ -1,3 +1,3 @@
 # No2094
 
-https://leetcode-cn.com/problems/finding-3-digit-even-numbers/
+<https://leetcode.cn/problems/finding-3-digit-even-numbers/description>
