@@ -22,3 +22,9 @@ impl Solution {
     }
   }
 }
+
+fn main() {
+  let mut a = vec![2, 1, 0, 2, 1];
+  Solution::sort_colors(&mut a);
+  println!("{:?}", a);
+}

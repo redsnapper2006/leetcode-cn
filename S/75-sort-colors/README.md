@@ -1,6 +1,6 @@
 # No75
 
-https://leetcode-cn.com/problems/sort-colors/
+<https://leetcode-cn.com/problems/sort-colors/>
 
 # Refs
 
