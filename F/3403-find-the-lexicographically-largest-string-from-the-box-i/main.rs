@@ -12,8 +12,7 @@ impl Solution {
     let mut idx: usize = 1;
     while idx < bb.len() {
       let idx_end = bb.len() - num_friends + 1 + (num_friends - 1).min(idx);
-      // println!("base {}", String::from_utf8(bb[base..base_end].to_vec()).unwrap());
-      // println!("idx {}", String::from_utf8(bb[idx..idx_end].to_vec()).unwrap());
+
       let mut i: usize = 0;
       let mut is_bigger: bool = false;
       while base + i < base_end && idx + i < idx_end {
@@ -29,7 +28,6 @@ impl Solution {
         base = idx;
         base_end = idx_end;
       }
-      // println!("result {} {}",is_bigger, String::from_utf8(bb[base..base_end].to_vec()).unwrap());
 
       idx += 1;
     }
