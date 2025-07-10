@@ -18,7 +18,7 @@ impl Solution {
             (nums.len() - i - 1) as i64
           }))
       .abs();
-      println!("{} {}", i, v);
+
       if min > v {
         min = v;
         ans = i as i32;
