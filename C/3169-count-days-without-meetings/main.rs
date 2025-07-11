@@ -1,7 +1,23 @@
 struct Solution {}
 
 impl Solution {
+
   pub fn count_days(days: i32, meetings: Vec<Vec<i32>>) -> i32 {
+    let mut ans: i32 = 0;
+    let mut meetings = meetings;
+    meetings.sort_unstable();
+
+    let mut base = meetings[0][0];
+    meetings.iter().for_each(|day| {
+      let s = day[0];
+      let e = day[1];
+      ans += base.max(e + 1) - base.max(s);
+      base = base.max(e + 1);
+    });
+    days - ans
+  }
+
+  pub fn count_days2(days: i32, meetings: Vec<Vec<i32>>) -> i32 {
     let mut meetings = meetings;
     meetings.sort_unstable();
     let mut s: i32 = 0;
@@ -22,6 +38,7 @@ impl Solution {
     days - sum
   }
 }
+
 
 fn main() {
   println!(
