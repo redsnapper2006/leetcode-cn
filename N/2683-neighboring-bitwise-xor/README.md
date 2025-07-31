@@ -1,3 +1,3 @@
 # No2683
 
-https://leetcode.cn/problems/neighboring-bitwise-xor/
+<https://leetcode.cn/problems/neighboring-bitwise-xor/>

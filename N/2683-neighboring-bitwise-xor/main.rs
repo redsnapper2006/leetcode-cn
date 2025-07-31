@@ -1,7 +1,9 @@
-struct Solution {}
-
 impl Solution {
   pub fn does_valid_array_exist(derived: Vec<i32>) -> bool {
+    derived.iter().sum::<i32>() % 2 == 0
+  }
+
+  pub fn does_valid_array_exist2(derived: Vec<i32>) -> bool {
     let mut buf: Vec<i32> = vec![0; derived.len()];
 
     buf[0] = 0;
@@ -21,16 +23,8 @@ impl Solution {
       idx += 1;
     }
 
-    buf[0] = 1;
-    idx = 0;
-    while idx < derived.len() - 1 {
-      match derived[idx] {
-        0 => buf[idx + 1] = buf[idx],
-        _ => buf[idx + 1] = 1 - buf[idx],
-      }
-      idx += 1;
-    }
-
-    derived[idx] == buf[idx] ^ buf[0]
+    false
   }
 }
+
+struct Solution {}
