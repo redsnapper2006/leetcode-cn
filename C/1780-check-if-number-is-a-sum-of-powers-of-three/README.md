@@ -1,3 +1,3 @@
-# No5681
+# No1780
 
-https://leetcode-cn.com/contest/biweekly-contest-47/problems/check-if-number-is-a-sum-of-powers-of-three/
+<https://leetcode.cn/problems/check-if-number-is-a-sum-of-powers-of-three/>
