@@ -1,3 +1,3 @@
 # No36
 
-https://leetcode-cn.com/problems/valid-sudoku/
+<https://leetcode.cn/problems/valid-sudoku>
