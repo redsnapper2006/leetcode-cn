@@ -31,7 +31,7 @@ func getNoZeroIntegers(n int) []int {
 		if !isValid {
 			continue
 		}
-		return []int{s, r}
+		return []int{s - 1, r}
 	}
 }
 
