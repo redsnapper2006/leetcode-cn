@@ -4,7 +4,7 @@ impl Solution {
     let n = n as usize;
     let delay = delay as usize;
     let forget = forget as usize;
-    let mut dp: Vec<Vec<i64>> = vec![vec![0; 3]; n + 1 + delay];
+    let mut dp: Vec<Vec<i64>> = vec![vec![0; 2]; n + 1 + delay];
     dp[1][0] = 1;
     for i in 2..=n {
       dp[i][1] = (if i < delay { 0 } else { dp[i - delay][0] } + dp[i - 1][1]
