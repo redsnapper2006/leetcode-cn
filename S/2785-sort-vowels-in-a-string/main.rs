@@ -1,7 +1,7 @@
 impl Solution {
   pub fn sort_vowels(s: String) -> String {
     let mut res: Vec<u8> = Vec::new();
-    let mut cnt: Vec<i32> = vec![0; (b'z' - b'A') as usize + 1];
+    let mut cnt: Vec<i32> = vec![0; (b'u' - b'A') as usize + 1];
     s.as_bytes().iter().for_each(|&v| {
       if "AEIOUaeiou".contains(v as char) {
         cnt[(v - b'A') as usize] += 1;
