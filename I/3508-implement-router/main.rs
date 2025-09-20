@@ -1,6 +1,4 @@
-use std::collections::HashMap;
-use std::collections::HashSet;
-use std::collections::VecDeque;
+use std::collections::{HashMap,HashSet,VecDeque};
 
 struct Router {
   count: i32,
