@@ -1,3 +1,3 @@
 # No120
 
-https://leetcode-cn.com/problems/triangle/
+<https://leetcode-cn.com/problems/triangle/>
