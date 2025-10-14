@@ -30,7 +30,6 @@ impl Solution {
     }
   }
 
-
   pub fn has_increasing_subarrays2(nums: Vec<i32>, k: i32) -> bool {
     let mut left: Vec<i32> = vec![-1; nums.len()];
     let mut right: Vec<i32> = vec![-1; nums.len()];
