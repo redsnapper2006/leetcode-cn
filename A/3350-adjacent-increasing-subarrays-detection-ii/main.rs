@@ -1,5 +1,21 @@
 impl Solution {
   pub fn max_increasing_subarrays(nums: Vec<i32>) -> i32 {
+    let mut prev: i32 = 1;
+    let mut cnt: i32 = 1;
+    let mut ans: i32 = 1;
+    for i in 1..nums.len() {
+      if nums[i] > nums[i - 1] {
+        cnt += 1;
+      } else {
+        ans = ans.max(cnt / 2).max(cnt.min(prev));
+        prev = cnt;
+        cnt = 1;
+      }
+    }
+    ans.max(cnt / 2).max(cnt.min(prev))
+  }
+
+  pub fn max_increasing_subarrays(nums: Vec<i32>) -> i32 {
     let mut left: Vec<i32> = vec![-1; nums.len()];
     let mut right: Vec<i32> = vec![-1; nums.len()];
     (0..nums.len()).for_each(|idx| {
@@ -24,7 +40,7 @@ impl Solution {
       }
     });
 
-    let mut ans : i32 = 0;
+    let mut ans: i32 = 0;
     for idx in (0..nums.len() - 1) {
       ans = ans.max((idx as i32 - left[idx] + 1).min(right[idx + 1] - idx as i32));
     }
