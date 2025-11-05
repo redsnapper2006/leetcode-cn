@@ -9,10 +9,7 @@ impl Solution {
     let mut backup: BTreeSet<(i64, i64)> = BTreeSet::new();
     let mut map: BTreeMap<i64, i64> = BTreeMap::new();
     (0..k).for_each(|idx| {
-      map
-        .entry(nums[idx] as i64)
-        .and_modify(|x| *x += 1)
-        .or_insert(1);
+      map.entry(nums[idx] as i64).and_modify(|x| *x += 1).or_insert(1);
     });
     let mut q: BTreeSet<(i64, i64)> = BTreeSet::new();
     for (k, v) in map.iter() {

@@ -2,14 +2,8 @@ use std::collections::HashSet;
 use std::iter::Iterator;
 
 impl Solution {
-  pub fn count_unguarded(
-    m: i32,
-    n: i32,
-    guards: Vec<Vec<i32>>,
-    walls: Vec<Vec<i32>>,
-  ) -> i32 {
-    let mut dp: Vec<Vec<Vec<i32>>> =
-      vec![vec![vec![0; 4]; n as usize]; m as usize];
+  pub fn count_unguarded(m: i32, n: i32, guards: Vec<Vec<i32>>, walls: Vec<Vec<i32>>) -> i32 {
+    let mut dp: Vec<Vec<Vec<i32>>> = vec![vec![vec![0; 4]; n as usize]; m as usize];
 
     let mut gp: HashSet<(i32, i32)> = HashSet::new();
     let mut wp: HashSet<(i32, i32)> = HashSet::new();
@@ -21,12 +15,8 @@ impl Solution {
     });
 
     fn is_guard(
-      dp: &mut Vec<Vec<Vec<i32>>>,
-      idx: usize,
-      gp: &HashSet<(i32, i32)>,
-      wp: &HashSet<(i32, i32)>,
-      first: impl Iterator<Item = i32>,
-      second: impl Iterator<Item = i32> + Clone,
+      dp: &mut Vec<Vec<Vec<i32>>>, idx: usize, gp: &HashSet<(i32, i32)>, wp: &HashSet<(i32, i32)>,
+      first: impl Iterator<Item = i32>, second: impl Iterator<Item = i32> + Clone,
       row_or_col: bool,
     ) {
       for i in first {
@@ -55,10 +45,7 @@ impl Solution {
     for i in 0..m {
       for j in 0..n {
         let v = &dp[i as usize][j as usize];
-        if !gp.contains(&(i, j))
-          && !wp.contains(&(i, j))
-          && v[0] + v[1] + v[2] + v[3] == 0
-        {
+        if !gp.contains(&(i, j)) && !wp.contains(&(i, j)) && v[0] + v[1] + v[2] + v[3] == 0 {
           ans += 1;
         }
       }
