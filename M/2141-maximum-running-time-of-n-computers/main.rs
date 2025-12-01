@@ -1,5 +1,21 @@
 impl Solution {
   pub fn max_run_time(n: i32, batteries: Vec<i32>) -> i64 {
+    let mut n = n as i64;
+    let mut batteries = batteries.iter().map(|x| *x as i64).collect::<Vec<i64>>();
+    let mut total = batteries.iter().sum::<i64>();
+
+    batteries.sort_unstable();
+    for i in (0..batteries.len()).rev() {
+      if batteries[i] <= total / n {
+        return (total / n);
+      }
+      total -= batteries[i];
+      n -= 1;
+    }
+    0
+  }
+
+  pub fn max_run_time2(n: i32, batteries: Vec<i32>) -> i64 {
     let n = n as i64;
     let total = batteries.iter().map(|x| *x as i64).sum::<i64>();
 
