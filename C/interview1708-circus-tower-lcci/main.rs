@@ -1,9 +1,6 @@
 impl Solution {
   pub fn best_seq_at_index(height: Vec<i32>, weight: Vec<i32>) -> i32 {
-    let mut zip = height
-      .into_iter()
-      .zip(weight.into_iter())
-      .collect::<Vec<(i32, i32)>>();
+    let mut zip = height.into_iter().zip(weight.into_iter()).collect::<Vec<(i32, i32)>>();
     zip.sort_by(|x, y| {
       let x0 = &x.0;
       let x1 = &x.1;
@@ -25,7 +22,6 @@ impl Solution {
         stack.remove(off);
       }
     }
-    // println!("{:?}", stack);
 
     stack.iter().map(|x| x.1).max().unwrap()
   }
