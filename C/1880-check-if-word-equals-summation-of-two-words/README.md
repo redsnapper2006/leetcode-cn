@@ -1,0 +1,3 @@
+# No1880
+
+<https://leetcode.cn/problems/check-if-word-equals-summation-of-two-words/>

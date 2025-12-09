@@ -1,0 +1,3 @@
+# No1832
+
+<https://leetcode.cn/problems/check-if-the-sentence-is-pangram/description/>
