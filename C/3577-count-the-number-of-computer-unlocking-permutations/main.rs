@@ -7,6 +7,6 @@ impl Solution {
       }
       ans = ans * i as i64 % 1000000007;
     }
-    ans
+    ans as _
   }
 }
