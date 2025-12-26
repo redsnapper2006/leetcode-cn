@@ -1,5 +1,29 @@
 impl Solution {
   pub fn best_closing_time(customers: String) -> i32 {
+    let buf = customers
+      .as_bytes()
+      .iter()
+      .map(|&x| if x == b'Y' { 1 } else { 0 })
+      .collect::<Vec<i32>>();
+    let sum = buf.iter().sum::<i32>();
+
+    (0..=buf.len())
+      .fold((i32::MAX, i32::MAX, 0, 0), |(ans, mn, ys, ns), idx| {
+        (
+          if mn > sum - ys + ns { idx as i32 } else { ans },
+          if mn > sum - ys + ns {
+            sum - ys + ns
+          } else {
+            mn
+          },
+          ys + if idx < buf.len() { buf[idx] } else { 0 },
+          ns + if idx < buf.len() { 1 - buf[idx] } else { 0 },
+        )
+      })
+      .0
+  }
+
+  pub fn best_closing_time2(customers: String) -> i32 {
     let mut close: Vec<i32> = customers
       .as_bytes()
       .iter()
