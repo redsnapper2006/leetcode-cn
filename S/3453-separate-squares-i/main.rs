@@ -26,12 +26,10 @@ impl Solution {
       }
       e = e.max(k as f64);
     }
-    // println!("total {}", total);
-    // println!("buf {:?}", buf);
+
     while s <= e {
       let m = s + (e - s) / 2.0;
       let mm = m as i64;
-      // println!("s {} e {} m {}", s, e, m);
       let ii = match buf.binary_search_by(|b| b.0.cmp(&mm)) {
         Ok(v) => v as i32,
         Err(v) => v as i32 - 1,
@@ -60,7 +58,6 @@ impl Solution {
         let l = square[2] as f64;
         t += (m - b) * l;
       }
-      // println!("t {} {} {}", t, total / 2.0, t >= total / 2.0);
       if t >= (total / 2.0) {
         e = m - 0.00001;
       } else {
