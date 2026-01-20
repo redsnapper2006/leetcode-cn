@@ -2,6 +2,20 @@ impl Solution {
   pub fn min_bitwise_array(nums: Vec<i32>) -> Vec<i32> {
     nums
       .iter()
+      .map(|&x| {
+        if x == 2 {
+          -1
+        } else {
+          let t = !x;
+          x ^ ((t & -t) >> 1)
+        }
+      })
+      .collect()
+  }
+
+  pub fn min_bitwise_array2(nums: Vec<i32>) -> Vec<i32> {
+    nums
+      .iter()
       .map(|x| {
         let mut x = *x;
         if x == 2 {
