@@ -3,13 +3,10 @@ impl Solution {
     let mut ans = nums.clone();
 
     (0..nums.len()).for_each(|idx| {
-      let mut off = (idx as i32 + nums[idx]) % nums.len() as i32;
-      while off < 0 {
-        off += nums.len() as i32;
-        off %= nums.len() as i32;
-      }
-
-      ans[idx] = nums[off as usize];
+      let mut v = nums[idx];
+      v %= nums.len() as i32;
+      v += if v < 0 { nums.len() as i32 } else { 0 };
+      ans[idx] = nums[(idx + v as usize) % nums.len()];
     });
     ans
   }
