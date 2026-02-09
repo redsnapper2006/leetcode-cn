@@ -1,6 +1,6 @@
-# No1382
+# No875
 
-https://leetcode-cn.com/problems/koko-eating-bananas/
+<https://leetcode-cn.com/problems/koko-eating-bananas/>
 
 # Refs
 
