@@ -1,7 +1,17 @@
-struct Solution {}
-
 impl Solution {
   pub fn min_operations(s: String) -> i32 {
+    let (mut t0, mut t1): (i32, i32) = (0, 0);
+    s.as_bytes().iter().enumerate().for_each(|(idx, b)| {
+      if b - b'0' == (idx % 2) as u8 {
+        t1 += 1;
+      } else {
+        t0 += 1;
+      }
+    });
+    t0.min(t1)
+  }
+
+  pub fn min_operations2(s: String) -> i32 {
     let buf = s.into_bytes();
     let mut c1: Vec<u8> = vec!['0' as u8; buf.len()];
     let mut c2: Vec<u8> = vec!['0' as u8; buf.len()];
@@ -32,6 +42,8 @@ impl Solution {
     ret
   }
 }
+
+struct Solution {}
 
 fn main() {
   println!("{}", Solution::min_operations(String::from("010")));
