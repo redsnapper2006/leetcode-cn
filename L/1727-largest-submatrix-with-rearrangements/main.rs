@@ -1,7 +1,29 @@
-struct Solution {}
-
 impl Solution {
   pub fn largest_submatrix(matrix: Vec<Vec<i32>>) -> i32 {
+    let mut buf: Vec<(i32, usize)> = vec![];
+    for c in 0..matrix[0].len() {
+      buf.push((0, c));
+    }
+
+    let mut ans: i32 = 0;
+    for r in 0..matrix.len() {
+      for c in 0..buf.len() {
+        if matrix[r][buf[c].1] == 1 {
+          buf[c].0 = if r > 0 { buf[c].0 } else { 0 } + 1;
+        } else {
+          buf[c].0 = 0;
+        }
+      }
+      buf.sort_unstable();
+
+      for c in 0..buf.len() {
+        ans = ans.max(buf[c].0 * (matrix[0].len() - c) as i32);
+      }
+    }
+    ans
+  }
+
+  pub fn largest_submatrix2(matrix: Vec<Vec<i32>>) -> i32 {
     let mut buf: Vec<Vec<i32>> = vec![vec![0; matrix[0].len()]; matrix.len()];
     let mut max = 0;
     for i in 0..matrix.len() {
@@ -29,6 +51,8 @@ impl Solution {
     max
   }
 }
+
+struct Solution {}
 
 fn main() {
   println!("{}", Solution::largest_submatrix(vec![vec![0; 5]; 5]));
