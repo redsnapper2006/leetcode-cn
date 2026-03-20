@@ -6,6 +6,29 @@ impl Solution {
     for rr in 0..grid.len() - k + 1 {
       for cc in 0..grid[0].len() - k + 1 {
         let mut buf: Vec<i32> = vec![];
+        for r in rr..rr + k {
+          buf.extend_from_slice(&grid[r][cc..cc + k]);
+        }
+        buf.sort_unstable();
+        buf.dedup();
+
+        ret[rr][cc] = if buf.len() < 2 {
+          0
+        } else {
+          buf.windows(2).map(|w| w[1] - w[0]).min().unwrap()
+        };
+      }
+    }
+
+    ret
+  }
+
+  pub fn min_abs_diff2(grid: Vec<Vec<i32>>, k: i32) -> Vec<Vec<i32>> {
+    let k = k as usize;
+    let mut ret: Vec<Vec<i32>> = vec![vec![0; grid[0].len() - k + 1]; grid.len() - k + 1];
+    for rr in 0..grid.len() - k + 1 {
+      for cc in 0..grid[0].len() - k + 1 {
+        let mut buf: Vec<i32> = vec![];
         let mut btm: BTreeMap<i32, i32> = BTreeMap::new();
         for r in rr..rr + k {
           for c in cc..cc + k {
