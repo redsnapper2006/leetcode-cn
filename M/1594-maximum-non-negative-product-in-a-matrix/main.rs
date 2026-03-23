@@ -1,7 +1,35 @@
-struct Solution {}
-
 impl Solution {
   pub fn max_product_path(grid: Vec<Vec<i32>>) -> i32 {
+    let mut dp: Vec<Vec<(i64, i64)>> =
+      vec![vec![(grid[0][0] as i64, grid[0][0] as i64); grid[0].len()]; grid.len()];
+    for r in 0..grid.len() {
+      for c in 0..grid[0].len() {
+        if r == 0 && c == 0
+          continue;
+
+        let v = grid[r][c] as i64;
+        let mut buf: Vec<i64> = vec![];
+        if c > 0 {
+          buf.push(dp[r][c - 1].0 * v);
+          buf.push(dp[r][c - 1].1 * v);
+        }
+        if r > 0 {
+          buf.push(dp[r - 1][c].0 * v);
+          buf.push(dp[r - 1][c].1 * v);
+        }
+
+        dp[r][c] = (*buf.iter().min().unwrap(), *buf.iter().max().unwrap());
+      }
+    }
+
+    if dp[grid.len() - 1][grid[0].len() - 1].1 < 0 {
+      -1
+    } else {
+      (dp[grid.len() - 1][grid[0].len() - 1].1 % 1000000007) as i32
+    }
+  }
+
+  pub fn max_product_path2(grid: Vec<Vec<i32>>) -> i32 {
     let mut buf: Vec<Vec<[i64; 2]>> = vec![vec![[0; 2]; grid[0].len()]; grid.len()];
 
     for i in 0..grid.len() {
@@ -72,6 +100,12 @@ impl Solution {
     (buf[grid.len() - 1][grid[0].len() - 1][1] % 1000000007) as i32
   }
 }
+
+
+
+struct Solution {}
+
+
 
 fn main() {
   println!(
