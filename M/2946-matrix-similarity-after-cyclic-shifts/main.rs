@@ -1,5 +1,19 @@
 impl Solution {
   pub fn are_similar(mat: Vec<Vec<i32>>, k: i32) -> bool {
+    let k = k as usize;
+    let n = mat[0].len();
+    for r in 0..mat.len() {
+      for c in 0..mat[0].len() {
+        if mat[r][c] != mat[r][(c + k) % n] {
+          return false;
+        }
+      }
+    }
+
+    true
+  }
+
+  pub fn are_similar2(mat: Vec<Vec<i32>>, k: i32) -> bool {
     let col_cnt = mat[0].len();
     let k = k as usize % col_cnt;
     let mut row: usize = 0;
