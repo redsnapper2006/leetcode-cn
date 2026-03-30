@@ -1,5 +1,15 @@
 impl Solution {
   pub fn check_strings(s1: String, s2: String) -> bool {
+    s1.as_bytes().iter().enumerate().fold([[0; 26]; 2], |mut sum, (idx, b)| {
+      sum[idx % 2][(b - b'a') as usize] += 1;
+      sum
+    }) == s2.as_bytes().iter().enumerate().fold([[0; 26]; 2], |mut sum, (idx, b)| {
+      sum[idx % 2][(b - b'a') as usize] += 1;
+      sum
+    })
+  }
+
+  pub fn check_strings2(s1: String, s2: String) -> bool {
     let mut odd: Vec<i32> = vec![0; 26];
     let mut even: Vec<i32> = vec![0; 26];
     s1.as_bytes().iter().enumerate().for_each(|(idx, &v)| {
