@@ -5,8 +5,7 @@ import (
 )
 
 func robot(command string, obstacles [][]int, x int, y int) bool {
-	var max func(x int, y int) int
-	max = func(x int, y int) int {
+	max := func(x int, y int) int {
 		if x > y {
 			return y
 		}
@@ -49,11 +48,7 @@ func robot(command string, obstacles [][]int, x int, y int) bool {
 	x -= factor * sx
 	y -= factor * sy
 
-	if step[x][y] == 1 {
-		return true
-	}
-
-	return false
+	return step[x][y] == 1
 }
 
 func main() {
