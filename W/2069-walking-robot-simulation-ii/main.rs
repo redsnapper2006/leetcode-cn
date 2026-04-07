@@ -1,12 +1,59 @@
 struct Robot {
   width: i32,
   height: i32,
+  step: i32,
+}
+
+impl Robot {
+  fn new(width: i32, height: i32) -> Self {
+    Robot {
+      width: width,
+      height: height,
+      step: 0,
+    }
+  }
+
+  fn step(&mut self, num: i32) {
+    self.step = (self.step + num - 1) % (self.width * 2 + self.height * 2 - 4) + 1;
+  }
+
+  fn get_pos(&self) -> Vec<i32> {
+    if self.step < self.width {
+      vec![self.step, 0]
+    } else if self.step < self.width + self.height - 1 {
+      vec![self.width - 1, self.step - self.width + 1]
+    } else if self.step < self.width * 2 + self.height - 2 {
+      vec![
+        self.width * 2 + self.height - self.step - 3,
+        self.height - 1,
+      ]
+    } else {
+      vec![0, self.width * 2 + self.height * 2 - self.step - 4]
+    }
+  }
+
+  fn get_dir(&self) -> String {
+    if self.step < self.width {
+      "East".to_string()
+    } else if self.step < self.width + self.height - 1 {
+      "North".to_string()
+    } else if self.step < self.width * 2 + self.height - 2 {
+      "West".to_string()
+    } else {
+      "South".to_string()
+    }
+  }
+}
+
+struct Robot2 {
+  width: i32,
+  height: i32,
   x: i32,
   y: i32,
   d: i32, // E: 0, N:1, W:2, S:3
 }
 
-impl Robot {
+impl Robot2 {
   fn new(width: i32, height: i32) -> Self {
     Robot {
       width: width,
