@@ -1,7 +1,20 @@
-struct Solution {}
-
 impl Solution {
-  pub fn closet_target(words: Vec<String>, target: String, start_index: i32) -> i32 {
+  pub fn closest_target(words: Vec<String>, target: String, start_index: i32) -> i32 {
+    words.iter().enumerate().fold(-1, |ans, (idx, word)| {
+      if *word != target {
+        ans
+      } else {
+        let off = (start_index - idx as i32).abs();
+        if ans == -1 {
+          off.min(words.len() as i32 - off)
+        } else {
+          ans.min(off).min(words.len() as i32 - off)
+        }
+      }
+    })
+  }
+
+  pub fn closest_target2(words: Vec<String>, target: String, start_index: i32) -> i32 {
     let mut offset: Vec<usize> = Vec::new();
     let size = words.len();
     words.iter().enumerate().for_each(|(idx, v)| {
@@ -31,3 +44,5 @@ impl Solution {
     min
   }
 }
+
+struct Solution {}
