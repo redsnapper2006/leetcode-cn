@@ -1,5 +1,3 @@
-struct Solution {}
-
 impl Solution {
   pub fn check(nums: Vec<i32>) -> bool {
     let mut idx: usize = 0;
@@ -20,3 +18,5 @@ impl Solution {
     true
   }
 }
+
+struct Solution {}
