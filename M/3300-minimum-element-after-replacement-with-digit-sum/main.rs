@@ -1,6 +1,6 @@
 impl Solution {
   pub fn min_element(nums: Vec<i32>) -> i32 {
-    *nums
+    nums
       .iter()
       .map(|&num| {
         let mut n = num;
@@ -11,8 +11,6 @@ impl Solution {
         }
         sum
       })
-      .collect::<Vec<i32>>()
-      .iter()
       .min()
       .unwrap()
   }
