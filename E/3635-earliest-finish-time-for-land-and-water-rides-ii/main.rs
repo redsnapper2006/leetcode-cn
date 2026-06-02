@@ -2,6 +2,30 @@ impl Solution {
   pub fn earliest_finish_time(
     land_start_time: Vec<i32>, land_duration: Vec<i32>, water_start_time: Vec<i32>, water_duration: Vec<i32>,
   ) -> i32 {
+    fn search(
+      first_start_time: &Vec<i32>, first_duration: &Vec<i32>, second_start_time: &Vec<i32>, second_duration: &Vec<i32>,
+    ) -> i32 {
+      let mut end1: i32 = i32::MAX;
+      for i in 0..first_start_time.len() {
+        end1 = end1.min(first_start_time[i] + first_duration[i]);
+      }
+      let mut end2: i32 = i32::MAX;
+      for i in 0..second_start_time.len() {
+        end2 = end2.min(second_start_time[i].max(end1) + second_duration[i]);
+      }
+      end2
+    }
+    search(&land_start_time, &land_duration, &water_start_time, &water_duration).min(search(
+      &water_start_time,
+      &water_duration,
+      &land_start_time,
+      &land_duration,
+    ))
+  }
+
+  pub fn earliest_finish_time2(
+    land_start_time: Vec<i32>, land_duration: Vec<i32>, water_start_time: Vec<i32>, water_duration: Vec<i32>,
+  ) -> i32 {
     fn merge(start_time: &Vec<i32>, duration: &Vec<i32>) -> (Vec<(i32, i32)>, Vec<i32>) {
       let mut sd: Vec<(i32, i32)> = vec![];
       let mut s: Vec<i32> = vec![];
