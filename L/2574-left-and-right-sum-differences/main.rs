@@ -1,7 +1,17 @@
-struct Solution {}
-
 impl Solution {
-  pub fn left_rigth_difference(nums: Vec<i32>) -> Vec<i32> {
+  pub fn left_right_difference(nums: Vec<i32>) -> Vec<i32> {
+    let mut total: i32 = nums.iter().sum();
+
+    let mut sum: i32 = 0;
+    (0..nums.len()).fold(vec![], |mut ans, idx| {
+      total -= nums[idx];
+      ans.push((total - sum).abs());
+      sum += nums[idx];
+      ans
+    })
+  }
+
+  pub fn left_right_difference2(nums: Vec<i32>) -> Vec<i32> {
     let mut left: Vec<i32> = vec![0; nums.len()];
     let mut right: Vec<i32> = vec![0; nums.len()];
 
@@ -23,6 +33,8 @@ impl Solution {
       rs += nums[nums.len() - 1 - idx];
     });
 
-    left.iter().zip(right).map(|(l,r)| (l-r).abs()).collect::<Vec<i32>>()
+    left.iter().zip(right).map(|(l, r)| (l - r).abs()).collect::<Vec<i32>>()
   }
 }
+
+struct Solution {}
