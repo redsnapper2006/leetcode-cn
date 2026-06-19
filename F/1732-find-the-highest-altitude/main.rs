@@ -1,18 +1,23 @@
-struct Solution {}
 impl Solution {
-    pub fn largest_altitude(gain: Vec<i32>) -> i32 {
-        let mut sum: i32 = 0;
-        let mut max: i32 = 0;
-        for x in &gain {
-            sum += x;
-            if sum > 0 && sum > max {
-                max = sum;
-            }
-        }
-        max
+  pub fn largest_altitude(gain: Vec<i32>) -> i32 {
+    gain.iter().fold((0, 0), |(ans, sum), &v| (ans.max(sum + v), sum + v)).0
+  }
+
+  pub fn largest_altitude2(gain: Vec<i32>) -> i32 {
+    let mut sum: i32 = 0;
+    let mut max: i32 = 0;
+    for x in &gain {
+      sum += x;
+      if sum > 0 && sum > max {
+        max = sum;
+      }
     }
+    max
+  }
 }
 
+struct Solution {}
+
 fn main() {
-    println!("{}", Solution::largest_altitude([-5, 1, 5, 0, -7].to_vec()));
+  println!("{}", Solution::largest_altitude([-5, 1, 5, 0, -7].to_vec()));
 }
