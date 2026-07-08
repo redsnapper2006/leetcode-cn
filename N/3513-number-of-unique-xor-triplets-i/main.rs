@@ -1,10 +1,10 @@
 impl Solution {
   pub fn unique_xor_triplets(nums: Vec<i32>) -> i32 {
-    let n = nums.len() as i32;
+    let n = nums.len();
     if n <= 2 {
-      n
+      n as i32
     } else {
-      1 << (32 - n.leading_zeros())
+      n.next_power_of_two() as i32
     }
   }
 }
