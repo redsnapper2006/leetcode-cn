@@ -1,5 +1,25 @@
 impl Solution {
   pub fn smallest_palindrome(s: String) -> String {
+    let bb = s.as_bytes().to_vec();
+    let mut cnt: Vec<usize> = (0..bb.len() / 2).fold(vec![0; 26], |mut cnt, i| {
+      cnt[(bb[i] - b'a') as usize] += 1;
+      cnt
+    });
+
+    let mut ans: Vec<u8> = (0..26).fold(vec![], |mut ans, i| {
+      ans.append(&mut vec![(b'a' + i) as u8; cnt[i as usize]]);
+      ans
+    });
+    if bb.len() % 2 == 1 {
+      ans.push(bb[bb.len() / 2]);
+    }
+    (0..bb.len() / 2).rev().for_each(|idx| {
+      ans.push(ans[idx]);
+    });
+    String::from_utf8(ans).unwrap()
+  }
+
+  pub fn smallest_palindrome2(s: String) -> String {
     let mut buf: Vec<i32> = vec![0; 26];
     s.as_bytes().to_vec().iter().for_each(|&b| {
       buf[(b - b'a') as usize] += 1;
