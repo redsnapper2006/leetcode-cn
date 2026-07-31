@@ -1,15 +1,15 @@
 impl Solution {
   pub fn minimum_pushes(word: String) -> i32 {
-    let mut buf: Vec<i32> = vec![0; 26];
-    word.as_bytes().iter().for_each(|&b| {
-      buf[(b - b'a') as usize] += 1;
-    });
+    let mut cnt = [0i32; 26];
+    for b in word.bytes() {
+      cnt[(b - b'a') as usize] += 1;
+    }
+    cnt.sort_unstable_by(|a, b| b.cmp(a));
 
-    buf.sort_unstable();
-    let mut ans: i32 = 0;
-    (0..26).rev().for_each(|idx| {
-      ans += buf[idx] * ((25 - idx as i32) / 8 + 1);
-    });
+    let mut ans = 0i32;
+    for idx in 0..26i32 {
+      ans += cnt[idx as usize] * ((idx >> 3) + 1);
+    }
     ans
   }
 }
