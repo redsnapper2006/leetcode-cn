@@ -1,18 +1,20 @@
 impl Solution {
   pub fn smallest_number(n: i32, t: i32) -> i32 {
-    let mut n = n;
-    while n <= 100 {
-      let mut m = n;
-      let mut multi: i32 = 1;
-      while m > 0 {
-        multi *= m % 10;
-        m /= 10;
+    let digits_product = |mut x: i32| -> i32 {
+      let mut product = 1i32;
+      while x > 0 {
+        product *= x % 10;
+        x /= 10;
       }
-      if multi % t == 0 {
-        break;
+      product
+    };
+
+    for i in 0..10 {
+      if digits_product(n + i) % t == 0 {
+        return n + i;
       }
-      n += 1;
     }
-    n
+
+    unreachable!()
   }
 }
