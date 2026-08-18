@@ -3,16 +3,31 @@ impl Solution {
     if k == nums.len() as i32 {
       return *nums.iter().max().unwrap();
     }
-    let mut dp :Vec<i32> = vec![0;51];
-    nums.iter().enumerate().for_each(|(idx, &v) | {
-      dp[v as usize] += (idx+1).min(k as usize).min(nums.len()-idx) as i32;
-    });
+    let mut buf = [0i32; 51];
+    for &v in &nums {
+      buf[v as usize] += 1;
+    }
+    match k {
+      1 => {
+        for i in (0..51).rev() {
+          if buf[i] == 1 {
+            return i as i32;
+          }
+        }
+        -1
+      }
+      _ => {
+        let mut ans: i32 = -1;
+        if buf[nums[0] as usize] == 1 {
+          ans = ans.max(nums[0]);
+        }
+        let last_val = *nums.last().unwrap();
+        if buf[last_val as usize] == 1 {
+          ans = ans.max(last_val);
+        }
 
-    for i in (0..51).rev() {
-      if dp[i] == 1  {
-        return i as _;
+        ans
       }
     }
-    -1
   }
 }
