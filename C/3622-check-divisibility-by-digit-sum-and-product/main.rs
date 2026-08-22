@@ -3,12 +3,13 @@ impl Solution {
     let mut sum: i32 = 0;
     let mut product: i32 = 1;
     let mut n = n;
-    let nn = n;
+    let orig = n;
     while n > 0 {
-      sum += n % 10;
-      product *= n % 10;
+      let d = n % 10;
+      sum += d;
+      product *= d;
       n /= 10;
     }
-    nn % (sum + product) == 0
+    orig % (sum + product) == 0
   }
 }
