@@ -1,12 +1,13 @@
-use std::collections::HashSet;
-
 impl Solution {
   pub fn missing_multiple(nums: Vec<i32>, k: i32) -> i32 {
-    let set: HashSet<i32> = HashSet::from_iter(nums.iter().cloned());
-    let mut b: i32 = k;
-    while set.contains(&b) {
+    let mut occupy = 0u128;
+    for &n in &nums {
+      occupy |= (1 << n);
+    }
+    let mut b = k;
+    while b < 101 && occupy & (1 << b) != 0 {
       b += k;
     }
-    b
+    b as _
   }
 }
