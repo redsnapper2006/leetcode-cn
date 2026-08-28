@@ -1,16 +1,14 @@
 impl Solution {
   pub fn lex_palindromic_permutation(s: String, target: String) -> String {
     let mut cnt: [u16; 26] = [0; 26];
-
-    let bs = s.as_bytes();
-    for &b in bs {
+    for &b in s.as_bytes() {
       cnt[(b - b'a') as usize] += 1;
     }
-    let mut odd: u16 = 0;
-    let mut ob: u8 = b' ';
+
+    let (mut odd, mut ob) = (0u16, 0u8);
     for i in 0..26 {
-      odd += cnt[i] % 2;
-      if cnt[i] % 2 == 1 {
+      if cnt[i] & 1 == 1 {
+        odd += 1;
         ob = b'a' + i as u8;
       }
     }
@@ -19,14 +17,18 @@ impl Solution {
     }
 
     let bt = target.as_bytes();
-    let mut buf: Vec<u8> = vec![b'0'; bt.len()];
+    let (n, half) = (bt.len(), bt.len() / 2);
+    let mut buf: Vec<u8> = vec![0u8; n];
     if odd == 1 {
       cnt[(ob - b'a') as usize] -= 1;
-      buf[bt.len() / 2] = ob;
+      buf[half] = ob;
     }
-    fn recur(bt: &[u8], idx: usize, cnt: &mut [u16], buf: &mut Vec<u8>) -> bool {
-      if idx == bt.len() / 2 {
-        for i in 0..bt.len() {
+
+    fn recur(
+      bt: &[u8], idx: usize, half: usize, n: usize, cnt: &mut [u16], buf: &mut Vec<u8>,
+    ) -> bool {
+      if idx == half {
+        for i in 0..n {
           if buf[i] != bt[i] {
             return buf[i] > bt[i];
           }
@@ -34,18 +36,17 @@ impl Solution {
         return false;
       }
 
+      let mirror = n - 1 - idx;
       let offset = (bt[idx] - b'a') as usize;
       if cnt[offset] > 1 {
         cnt[offset] -= 2;
         let candi = b'a' + offset as u8;
-        buf[idx] = candi;
-        buf[bt.len() - 1 - idx] = candi;
-        if recur(bt, idx + 1, cnt, buf) {
+        buf[idx] = bt[idx];
+        buf[mirror] = bt[idx];
+        if recur(bt, idx + 1, half, n, cnt, buf) {
           return true;
         }
         cnt[offset] += 2;
-        buf[idx] = b'0';
-        buf[bt.len() - 1 - idx] = b'0';
       }
 
       for i in offset + 1..26 {
@@ -53,15 +54,14 @@ impl Solution {
           cnt[i] -= 2;
           let candi = b'a' + i as u8;
           buf[idx] = candi;
-          buf[bt.len() - 1 - idx] = candi;
+          buf[mirror] = candi;
           let mut nxt: usize = idx + 1;
           for j in 0..26 {
             let candi = b'a' + j as u8;
-            for _ in 0..cnt[j] / 2 {
-              buf[nxt] = candi;
-              buf[bt.len() - 1 - nxt] = candi;
-              nxt += 1;
-            }
+            let pairs = cnt[j] as usize / 2;
+            buf[nxt..nxt + pairs].fill(candi);
+            buf[n - nxt - pairs..n - nxt].fill(candi);
+            nxt += pairs;
           }
           return true;
         }
@@ -69,7 +69,7 @@ impl Solution {
       false
     }
 
-    if recur(&bt, 0, &mut cnt, &mut buf) {
+    if recur(&bt, 0, half, n, &mut cnt, &mut buf) {
       String::from_utf8(buf).unwrap()
     } else {
       "".to_string()
