@@ -1,5 +1,33 @@
 impl Solution {
   pub fn total_numbers(digits: Vec<i32>) -> i32 {
+    let mut buf: [u8; 10] = [0; 10];
+    digits.iter().for_each(|&d| {
+      buf[d as usize] += 1;
+    });
+
+    let mut ans: i32 = 0;
+    for i in (0..10).step_by(2) {
+      if buf[i] == 0 {
+        continue;
+      }
+      let mut cnt: i32 = 0;
+      for j in 0..10 {
+        let base = if i == j { 1 } else { 0 };
+        cnt += if buf[j] > base { 1 } else { 0 };
+        if j != 0 && buf[j] > base + 1 {
+          ans += 1;
+        }
+      }
+      ans += (cnt - 1) * (cnt - 1);
+
+      if (i != 0 && buf[0] == 0 || i == 0 && buf[0] == 1) {
+        ans += cnt - 1;
+      }
+    }
+    ans
+  }
+
+  pub fn total_numbers2(digits: Vec<i32>) -> i32 {
     use std::collections::HashSet;
     let mut set: HashSet<i32> = HashSet::new();
     let (mut i1, mut i2, mut i3): (usize, usize, usize) = (0, 0, 0);
