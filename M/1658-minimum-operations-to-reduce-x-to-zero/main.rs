@@ -1,34 +1,28 @@
-struct Solution {}
-
 use std::collections::HashMap;
 impl Solution {
   pub fn min_operations(nums: Vec<i32>, x: i32) -> i32 {
-    let remain: i32 = nums.iter().sum::<i32>() - x;
+    let n = nums.len();
+    let remain = nums.iter().sum::<i32>() - x;
     if remain < 0 {
       return -1;
     }
     if remain == 0 {
-      return nums.len() as i32;
+      return n as i32;
     }
-    let mut m: HashMap<i32, i32> = HashMap::new();
-    m.insert(0, -1);
-    let mut sum: i32 = 0;
-    let mut ret: i32 = nums.len() as i32;
-    for i in 0..nums.len() {
+    let mut m: HashMap<i32, usize> = HashMap::new();
+    m.insert(0, 0);
+    let mut sum = 0i32;
+    let mut ret = n;
+    for i in 0..n {
       sum += nums[i];
-      if sum == x && ret > i as i32 + 1 {
-        ret = i as i32 + 1;
+      if sum >= remain
+        && let Some(p) = m.get(&(sum - remain))
+      {
+        ret = ret.min(n - i + p - 1);
       }
-      let d = sum - remain;
-      if m.contains_key(&d) && ret > (nums.len() - i) as i32 + m.get(&d).unwrap() {
-        ret = (nums.len() - i) as i32 + m.get(&d).unwrap();
-      }
-      m.insert(sum, i as i32);
+      m.insert(sum, i + 1);
     }
-    if ret == nums.len() as i32 {
-      return -1;
-    }
-    ret
+    if ret == n { -1 } else { ret as i32 }
   }
 
   pub fn min_operations2(nums: Vec<i32>, x: i32) -> i32 {
@@ -78,3 +72,5 @@ impl Solution {
     ret
   }
 }
+
+struct Solution {}
