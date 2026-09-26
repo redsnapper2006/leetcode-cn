@@ -1,36 +1,29 @@
-struct Solution {}
-
 use std::collections::HashMap;
 impl Solution {
   pub fn evaluate(s: String, knowledge: Vec<Vec<String>>) -> String {
-    let mut is_in: bool = false;
-    let mut buf: Vec<u8> = Vec::new();
-    let mut ret: Vec<u8> = Vec::new();
-
-    let mut m: HashMap<String, String> = knowledge
+    let mut m: HashMap<String, Vec<u8>> = knowledge
       .into_iter()
-      .map(|x| (x[0].clone(), x[1].clone()))
+      .map(|x| (x[0].clone(), x[1].as_bytes().to_vec()))
       .collect();
-    for b in s.as_bytes() {
-      if *b == '(' as u8 {
-        is_in = true;
-        buf.clear();
-      } else if *b == ')' as u8 {
-        is_in = false;
-        let k = String::from_utf8(buf.clone()).unwrap();
-        if m.contains_key(&k) {
-          ret.append(&mut m.get(&k).unwrap().as_bytes().to_vec());
-        } else {
-          ret.push('?' as u8);
+
+    let bb = s.as_bytes().to_vec();
+    let mut ans: Vec<u8> = vec![];
+    let mut prev = 0usize;
+    for i in 0..bb.len() {
+      match bb[i] {
+        b'(' => prev = ans.len(),
+        b')' => {
+          let sub = m
+            .get(&String::from_utf8(ans[prev..].to_vec()).unwrap())
+            .unwrap_or(&vec![b'?'])
+            .clone();
+          ans.resize(prev, b'?');
+          ans.extend(sub);
         }
-      } else {
-        if is_in {
-          buf.push(*b);
-        } else {
-          ret.push(*b);
-        }
+        _ => ans.push(bb[i]),
       }
     }
-    String::from_utf8(ret).unwrap()
+
+    String::from_utf8(ans).unwrap()
   }
 }
