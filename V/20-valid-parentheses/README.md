@@ -1,3 +1,3 @@
 # No20
 
-https://leetcode-cn.com/problems/valid-parentheses/
+<https://leetcode-cn.com/problems/valid-parentheses/>
