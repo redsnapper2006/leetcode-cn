@@ -4,8 +4,6 @@ import (
 	"fmt"
 )
 
-
-
 func minAddToMakeValid(S string) int {
 	var stack []byte
 
