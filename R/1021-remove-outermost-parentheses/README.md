@@ -1,3 +1,3 @@
 # No1021
 
-https://leetcode-cn.com/problems/remove-outermost-parentheses/
+<https://leetcode-cn.com/problems/remove-outermost-parentheses/>
