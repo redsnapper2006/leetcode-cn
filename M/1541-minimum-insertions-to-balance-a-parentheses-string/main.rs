@@ -1,7 +1,26 @@
-struct Solution {}
-
 impl Solution {
   pub fn min_insertions(s: String) -> i32 {
+    let (mut need, mut ans) = (0i32, 0i32);
+    for b in s.bytes() {
+      if b == b')' {
+        need -= 1;
+        if need < 0 {
+          ans += 1;
+          need += 2;
+        }
+      } else {
+        need += 2;
+        if need & 1 == 1 {
+          ans += 1;
+          need -= 1;
+        }
+      }
+    }
+
+    ans + need
+  }
+
+  pub fn min_insertions2(s: String) -> i32 {
     let mut cnt: i32 = 0;
     let bb: Vec<u8> = s.as_bytes().to_vec();
 
@@ -31,6 +50,8 @@ impl Solution {
     cnt + right_cnt + right.len() as i32 * 2
   }
 }
+
+struct Solution {}
 
 fn main() {
   println!("{}", Solution::min_insertions("(()))".to_string()));
