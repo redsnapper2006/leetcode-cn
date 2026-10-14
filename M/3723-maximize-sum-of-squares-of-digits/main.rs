@@ -1,16 +1,13 @@
 impl Solution {
   pub fn max_sum_of_squares(num: i32, sum: i32) -> String {
-    let n = num as usize;
-    let mut buf: Vec<u8> = vec![0u8; n];
-    let mut sum = sum;
-    for i in 0..n {
-      let d = sum.min(9);
-      buf[i] = b'0' + d as u8;
-      sum -= d;
-    }
-    if sum > 0 {
+    if sum > num * 9 {
       return "".to_string();
     }
-    String::from_utf8(buf).unwrap()
+    let mut ans: Vec<u8> = vec![b'9'; sum as usize / 9];
+    if sum % 9 > 0 {
+      ans.push(b'0' + (sum % 9) as u8);
+    }
+    ans.append(&mut vec![b'0'; num as usize - ans.len()]);
+    String::from_utf8(ans).unwrap()
   }
 }
