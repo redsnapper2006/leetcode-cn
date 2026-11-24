@@ -1,12 +1,13 @@
 impl Solution {
   pub fn max_length(nums: Vec<i32>) -> i32 {
     pub fn gcd(m: i32, n: i32) -> i32 {
-      if m > n {
-        return gcd(m - n, n);
-      } else if m < n {
-        return gcd(n - m, m);
+      let (mut m, mut n) = (m, n);
+      while n != 0 {
+        let t = n;
+        n = m % n;
+        m = t;
       }
-      m
+      m.abs()
     }
 
     let mut ans: usize = 2;
